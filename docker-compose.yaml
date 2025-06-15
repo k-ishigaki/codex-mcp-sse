@@ -1,0 +1,24 @@
+configs:
+  codex_config:
+    file: ./config.toml
+
+services:
+  codex-sse:
+    build:
+      context: .
+    configs:
+      - source: codex_config
+        target: /root/.codex/config.toml
+    restart: unless-stopped
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    volumes: # mounts app directories
+      - ../calendar-app:/root/calendar-app
+    ports:
+      - "8900:8900"
+    command: >
+      --pass-environment
+      --host=0.0.0.0
+      --port=8900
+      --allow-origin="*"
+      codex mcp

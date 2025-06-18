@@ -1,2 +1,11 @@
+model = "o4-mini"
+model_provider = "litellm"
+
+[model_providers.litellm]
+name = "litellm"
+base_url = "http://host.docker.internal:4000"
+env_key = "LITELLM_API_KEY"
+wire_api = "responses"
+
 approval_policy = "never"
 sandbox_permissions = ["disk-full-read-access"]

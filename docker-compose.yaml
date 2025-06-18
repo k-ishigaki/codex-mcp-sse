@@ -11,7 +11,7 @@ services:
         target: /root/.codex/config.toml
     restart: unless-stopped
     environment:
-      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      LITELLM_API_KEY: ${LITELLM_API_KEY}
     volumes: # mounts app directories
       - ../calendar-app:/root/calendar-app
     ports:
